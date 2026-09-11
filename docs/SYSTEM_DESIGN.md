@@ -11,6 +11,10 @@ The application supports two user experiences:
 
 ## Architecture diagram
 
+[![NCCI Policy Explorer system architecture](system-design-diagram.png)](system-design-diagram.png)
+
+Open the image above for a full-resolution view. The Mermaid source below remains available for editing.
+
 ```mermaid
 flowchart LR
     subgraph Sources["Source content"]
@@ -143,4 +147,3 @@ A production version would retain the same provenance contract while adding:
 ## Deployment topology
 
 The GitHub repository is connected to a Render Blueprint. A push to `main` triggers a new build, installs `pypdf`, starts `python app.py serve`, and exposes the service over HTTPS. Render injects the port and OpenAI key at runtime. The source PDF ships with the application; the SQLite index is rebuilt on a fresh instance and then reused for the life of that instance.
-
