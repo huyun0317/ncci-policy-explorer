@@ -1,0 +1,41 @@
+flowchart LR
+    subgraph Sources["Source content"]
+        PDF["CMS 2026 NCCI manual\n287-page PDF"]
+    end
+
+    subgraph Ingestion["Offline ingestion"]
+        EXTRACT["pypdf extraction"]
+        CLEAN["Header cleanup and\nchapter inference"]
+        CHUNK["Sentence-aware chunks\nwith page metadata"]
+        INSIGHTS["Topic, chapter, and\ncode aggregates"]
+    end
+
+    subgraph Storage["Local application storage"]
+        FTS["SQLite FTS5\n884 passages + BM25"]
+        META["Index metadata\nand insight JSON"]
+    end
+
+    subgraph Runtime["Request path"]
+        UI["Responsive web interface"]
+        API["Python HTTP server"]
+        RETRIEVE["Lexical retrieval\nand page diversity"]
+        PROMPT["Grounded prompt\nwith numbered evidence"]
+        VALIDATE["Citation validation"]
+        FALLBACK["Evidence-only fallback"]
+    end
+
+    subgraph External["External service"]
+        OPENAI["OpenAI Responses API\nGPT-5.6 Sol, low reasoning"]
+    end
+
+    PDF --> EXTRACT --> CLEAN --> CHUNK
+    CHUNK --> FTS
+    CHUNK --> INSIGHTS --> META
+    UI -->|"GET insights/search\nPOST chat"| API
+    API --> RETRIEVE --> FTS
+    FTS -->|"Top six passages"| PROMPT
+    PROMPT --> OPENAI --> VALIDATE --> API
+    PROMPT -. "No key or model error" .-> FALLBACK --> API
+    API -->|"Answer + page citations"| UI
+    UI -->|"Open source page"| PDF
+

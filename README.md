@@ -51,6 +51,8 @@ Render supplies `PORT` automatically. The app detects Render, binds to `0.0.0.0`
 
 ## Architecture
 
+See the [system design document](docs/SYSTEM_DESIGN.md) and the [standalone Mermaid diagram](docs/system-design.mmd) for the component model, request flow, trust boundaries, deployment topology, tradeoffs, and production evolution.
+
 ```text
 CMS PDF
   -> page-aware extraction and cleaning
