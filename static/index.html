@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Explore the CMS 2026 Medicare NCCI Coding Policy Manual." />
+    <title>NCCI Policy Explorer</title>
+    <link rel="stylesheet" href="/assets/styles.css?v=2" />
+  </head>
+  <body>
+    <header class="app-header">
+      <div class="brand-lockup">
+        <div class="brand-mark" aria-hidden="true">N</div>
+        <div>
+          <h1>NCCI Policy Explorer</h1>
+          <p>CMS Medicare Coding Policy Manual 2026</p>
+        </div>
+      </div>
+      <div class="header-actions">
+        <span id="mode-badge" class="mode-badge">Checking answer mode</span>
+        <a class="manual-link" href="/manual" target="_blank" rel="noreferrer">Open manual</a>
+      </div>
+    </header>
+
+    <main class="workspace">
+      <section class="insights-panel" aria-labelledby="insights-heading">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Indexed manual</p>
+            <h2 id="insights-heading">Policy insights</h2>
+          </div>
+          <span id="indexed-date" class="quiet-label"></span>
+        </div>
+
+        <div class="metric-row" aria-label="Manual statistics">
+          <div class="metric"><strong id="pages-count">-</strong><span>PDF pages</span></div>
+          <div class="metric"><strong id="chunks-count">-</strong><span>passages</span></div>
+          <div class="metric"><strong id="chapters-count">-</strong><span>sections</span></div>
+        </div>
+
+        <div class="insight-section">
+          <div class="subheading-row">
+            <h3>Topic signals</h3>
+            <span>Mentions across the manual</span>
+          </div>
+          <div id="topic-bars" class="bar-list" aria-live="polite"></div>
+        </div>
+
+        <div class="insight-section chapter-section">
+          <div class="subheading-row">
+            <h3>Chapter coverage</h3>
+            <span>Indexed word volume</span>
+          </div>
+          <div id="chapter-bars" class="bar-list chapter-bars" aria-live="polite"></div>
+        </div>
+
+        <div class="insight-section">
+          <div class="subheading-row">
+            <h3>Frequently referenced codes</h3>
+            <span>Not a recommendation</span>
+          </div>
+          <div id="code-list" class="code-list" aria-live="polite"></div>
+        </div>
+      </section>
+
+      <section class="chat-panel" aria-labelledby="chat-heading">
+        <div class="section-heading chat-heading">
+          <div>
+            <p class="eyebrow">Citation-grounded chat</p>
+            <h2 id="chat-heading">Ask the manual</h2>
+          </div>
+          <span class="quiet-label">Evidence first</span>
+        </div>
+
+        <div id="conversation" class="conversation" aria-live="polite">
+          <article class="message assistant-message">
+            <div class="message-label">Policy assistant</div>
+            <p>Ask about an NCCI policy, code, modifier, service, or exception. Answers are limited to retrieved passages and linked to the PDF page.</p>
+          </article>
+        </div>
+
+        <div class="suggestions" aria-label="Suggested questions">
+          <button type="button" data-question="When may modifier 59 be used with an NCCI edit?">Modifier 59</button>
+          <button type="button" data-question="How does the manual distinguish MUEs from utilization edits?">MUE policy</button>
+          <button type="button" data-question="Can anesthesia services be separately reported by the physician performing the procedure?">Anesthesia reporting</button>
+        </div>
+
+        <form id="question-form" class="composer">
+          <label for="question">Question</label>
+          <div class="composer-row">
+            <textarea id="question" name="question" rows="3" maxlength="2000" placeholder="Ask a specific coding policy question..." required></textarea>
+            <button id="ask-button" type="submit">Ask</button>
+          </div>
+          <p class="composer-note">For policy research only. Confirm coding decisions against the complete CMS manual.</p>
+        </form>
+      </section>
+    </main>
+
+    <script src="/assets/app.js?v=2" defer></script>
+  </body>
+</html>

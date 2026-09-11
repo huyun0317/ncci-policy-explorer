@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: ncci-policy-explorer
+    runtime: python
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: python app.py serve
+    healthCheckPath: /api/health
+    envVars:
+      - key: OPENAI_API_KEY
+        sync: false
+      - key: OPENAI_MODEL
+        value: gpt-5.6
+      - key: OPENAI_REASONING_EFFORT
+        value: low
+      - key: OPENAI_FALLBACK_MODEL
+        value: gpt-4.1-mini
