@@ -4,6 +4,8 @@ NCCI Policy Explorer is a small, explainable retrieval-augmented application for
 
 The project is intentionally scoped for a take-home exercise: it favors transparent retrieval, page-level provenance, and a small operational footprint over production infrastructure.
 
+For a guided presentation, use the [30-minute demo script](docs/DEMO_SCRIPT.md).
+
 ## What it does
 
 - Ingests all 287 pages of the CMS PDF with `pypdf`.
