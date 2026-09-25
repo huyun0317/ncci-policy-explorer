@@ -11,10 +11,6 @@ The application supports two user experiences:
 
 ## Architecture diagram
 
-[![NCCI Policy Explorer system architecture](system-design-diagram.png)](system-design-diagram.png)
-
-Open the image above for a full-resolution view. The Mermaid source below remains available for editing.
-
 ```mermaid
 flowchart LR
     subgraph Sources["Source content"]
@@ -57,8 +53,6 @@ flowchart LR
     API -->|"Answer + page citations"| UI
     UI -->|"Open source page"| PDF
 ```
-
-The standalone Mermaid source is available in [`system-design.mmd`](system-design.mmd).
 
 ## Components
 
